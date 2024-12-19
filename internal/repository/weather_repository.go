@@ -2,6 +2,8 @@ package repository
 
 import (
 	"context"
+	"errors"
+	"fmt"
 
 	"weather-app/internal/models"
 
@@ -30,6 +32,12 @@ func (r *WeatherRepository) GetWeather(ctx context.Context, city string) (*model
 	filter := bson.M{"city": city}
 	var weather models.WeatherData
 	err := r.collection.FindOne(ctx, filter).Decode(&weather)
+	if err != nil {
+		if errors.Is(err, mongo.ErrNoDocuments) {
+			return nil, fmt.Errorf("weather data for city %s not found", city)
+		}
+		return nil, err
+	}
 	return &weather, err
 }
 
