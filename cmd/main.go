@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"weather-app/internal/config"
+	"weather-app/config"
 	"weather-app/internal/handler"
 	"weather-app/internal/repository"
 	"weather-app/internal/service"
