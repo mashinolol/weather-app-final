@@ -82,6 +82,7 @@ Response:
  "city": "TestCity",
  "temp": 25.0,
  "description": "Sunny"
+ "last_updated": "update-time"
 }
 
 
