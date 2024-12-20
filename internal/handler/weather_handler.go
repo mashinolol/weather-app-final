@@ -7,10 +7,10 @@ import (
 )
 
 type WeatherHandler struct {
-	service *service.WeatherService
+	service service.WeatherServiceInterface
 }
 
-func NewWeatherHandler(service *service.WeatherService) *WeatherHandler {
+func NewWeatherHandler(service service.WeatherServiceInterface) *WeatherHandler {
 	return &WeatherHandler{service: service}
 }
 
