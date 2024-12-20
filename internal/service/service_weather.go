@@ -11,7 +11,6 @@ import (
 	"weather-app/internal/repository"
 )
 
-// test
 type WeatherServiceInterface interface {
 	GetWeather(ctx context.Context, city string) (*models.WeatherData, error)
 	UpdateWeather(ctx context.Context, city string) error
@@ -22,7 +21,6 @@ var (
 	ErrUpdateFailed    = errors.New("failed to update weather data")
 )
 
-// test //
 type WeatherService struct {
 	repo    repository.WeatherRepositoryInterface
 	baseURL string

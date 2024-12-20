@@ -37,12 +37,10 @@ func TestWeatherService_UpdateWeather(t *testing.T) {
 	ctx := context.Background()
 	city := "TestCity"
 
-	// Mock repository behavior
 	mockRepo.On("UpdateWeather", mock.Anything, mock.MatchedBy(func(data *models.WeatherData) bool {
 		return data.City == "TestCity" && data.Description == "Cloudy" && data.Temp == 20
 	})).Return(nil).Once()
 
-	// Mock external API response
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		fmt.Fprintln(w, `{
@@ -55,10 +53,8 @@ func TestWeatherService_UpdateWeather(t *testing.T) {
 
 	service.baseURL = server.URL
 
-	// Call the method
 	err := service.UpdateWeather(ctx, city)
 
-	// Assertions
 	assert.NoError(t, err)
 	mockRepo.AssertExpectations(t)
 }

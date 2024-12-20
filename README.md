@@ -31,7 +31,7 @@ This project is a backend application designed for managing and serving weather 
  Project Structure
 
 
-weather-app/
+weather-app-final/
 ├── cmd/                 Entry point for the application
 ├── config/              Configuration and environment management
 ├── internal/
